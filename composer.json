@@ -1,0 +1,24 @@
+{
+    "name": "vendor/laravel-proxy-client",
+    "description": "Laravel HTTP Client proxy via FastAPI service",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+      "psr-4": {
+        "Vendor\\ProxyClient\\": "src/"
+      }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "Vendor\\ProxyClient\\ProxyServiceProvider"
+        ]
+      }
+    },
+    "require": {
+      "php": "^7.4|^8.0",
+      "illuminate/support": "^8.0|^9.0|^10.0",
+      "illuminate/http": "^8.0|^9.0|^10.0"
+    }
+  }
+  
