@@ -19,7 +19,6 @@ class ProxyClient
         $url     = $arguments[0] ?? '';
         $options = $arguments[1] ?? [];
 
-        // ساخت payload برای FastAPI
         $payload = [
             'url'     => $url,
             'method'  => strtoupper($method),
@@ -28,9 +27,11 @@ class ProxyClient
             'body'    => $options['body']    ?? null,
         ];
 
-        $resp = Http::post($this->baseUrl.'/proxy', $payload);
+        $resp = Http::withBody(
+            json_encode($payload),
+            'application/json'
+        )->post($this->baseUrl.'/proxy');
 
-        $psr = $resp->toPsrResponse();
-        return new ClientResponse($psr);
+        return new ClientResponse($resp->toPsrResponse());
     }
 }
